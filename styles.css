@@ -1,0 +1,440 @@
+/* Alpine brand colors */
+:root {
+    --alpine-blue: #005eb8;
+    --alpine-light-blue: #0078d7;
+    --alpine-white: #ffffff;
+    --dark-gray: #222222;
+    --light-gray: #f5f5f5;
+    --medium-gray: #888888;
+}
+
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--dark-gray);
+    background-color: var(--light-gray);
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+/* Loading screen */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--alpine-blue);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: opacity 0.5s ease-out;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: var(--alpine-white);
+    animation: spin 1s ease-in-out infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.loading-text {
+    color: var(--alpine-white);
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+
+/* Header */
+header {
+    background-color: var(--alpine-blue);
+    color: var(--alpine-white);
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+nav ul {
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 2rem;
+}
+
+nav ul li a {
+    position: relative;
+    padding-bottom: 5px;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--alpine-white);
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+/* Hero section */
+.hero {
+    height: 100vh;
+    background: linear-gradient(135deg, var(--alpine-blue) 0%, var(--alpine-light-blue) 100%);
+    color: var(--alpine-white);
+    display: flex;
+    align-items: center;
+    padding: 0 5%;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2"/></svg>');
+    opacity: 0.3;
+}
+
+.hero-content {
+    max-width: 600px;
+    z-index: 1;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.cta-button {
+    background-color: var(--alpine-white);
+    color: var(--alpine-blue);
+    border: none;
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cta-button:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* 3D Model Viewer */
+.model-viewer {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--light-gray);
+    padding: 80px 0 40px;
+}
+
+.canvas-container {
+    flex: 1;
+    width: 100%;
+    height: 70vh;
+    position: relative;
+}
+
+#car-canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+    outline: none;
+}
+
+.controls-panel {
+    background-color: var(--alpine-white);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    margin: -50px 5% 40px;
+    position: relative;
+    z-index: 10;
+}
+
+.panel-header {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+.panel-header h2 {
+    color: var(--alpine-blue);
+    font-size: 1.8rem;
+}
+
+.control-group {
+    margin-bottom: 25px;
+}
+
+.control-group h3 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: var(--dark-gray);
+}
+
+.color-options {
+    display: flex;
+    gap: 15px;
+}
+
+.color-option {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    border: 2px solid #ddd;
+}
+
+.color-option:hover {
+    transform: scale(1.1);
+}
+
+.color-option.active {
+    border: 2px solid var(--alpine-blue);
+    transform: scale(1.1);
+}
+
+.view-buttons, .animation-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.view-button, .animation-button {
+    background-color: var(--light-gray);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 500;
+}
+
+.view-button:hover, .animation-button:hover {
+    background-color: #e0e0e0;
+}
+
+.view-button.active {
+    background-color: var(--alpine-blue);
+    color: var(--alpine-white);
+}
+
+.animation-button {
+    background-color: var(--alpine-blue);
+    color: var(--alpine-white);
+}
+
+.animation-button:hover {
+    background-color: var(--alpine-light-blue);
+}
+
+/* Specs Section */
+.specs {
+    padding: 80px 5%;
+    background-color: var(--alpine-white);
+}
+
+.specs h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    color: var(--alpine-blue);
+}
+
+.specs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.spec-item {
+    background-color: var(--light-gray);
+    padding: 25px;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.spec-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.spec-item h3 {
+    color: var(--alpine-blue);
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+}
+
+.spec-item p {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+/* Footer */
+footer {
+    background-color: var(--dark-gray);
+    color: var(--alpine-white);
+    padding: 60px 5% 20px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.footer-logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.footer-links ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.footer-social {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.social-icon:hover {
+    background-color: var(--alpine-blue);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    color: var(--medium-gray);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .model-viewer {
+        flex-direction: column;
+    }
+    
+    .canvas-container {
+        height: 50vh;
+    }
+    
+    .controls-panel {
+        width: 90%;
+        margin: -30px auto 30px;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .footer-links ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .model-viewer {
+        flex-direction: row;
+        align-items: center;
+        padding: 80px 5%;
+    }
+    
+    .canvas-container {
+        flex: 2;
+        height: 80vh;
+    }
+    
+    .controls-panel {
+        flex: 1;
+        margin: 0 0 0 -100px;
+        max-width: 400px;
+    }
+}
