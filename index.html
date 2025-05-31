@@ -3,33 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alpine A110 GT4 - GitHub Pages Test</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            text-align: center;
-            background-color: #f0f0f0;
+    <title>Alpine A110 GT4 - Racing Team</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data:,">
+    <!-- Import maps polyfill -->
+    <script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
         }
-        h1 {
-            color: #005eb8;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-    </style>
+    }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h1>Alpine A110 GT4</h1>
-        <p>This is a test page for GitHub Pages. If you can see this page, GitHub Pages is working correctly!</p>
-        <p>The full interactive 3D website will be available soon.</p>
+    <div class="loading-screen">
+        <div class="spinner"></div>
+        <div class="loading-text">Loading Alpine A110 GT4...</div>
     </div>
+
+    <header>
+        <div class="logo">ALPINE RACING</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>ALPINE A110 GT4</h1>
+                <p>Experience the power and precision of Alpine's racing masterpiece</p>
+                <button class="cta-button">Explore Features</button>
+            </div>
+        </section>
+
+        <section class="model-viewer">
+            <div class="canvas-container">
+                <canvas id="car-canvas"></canvas>
+            </div>
+            
+            <div class="controls-panel">
+                <div class="panel-header">
+                    <h2>Customize Your Alpine</h2>
+                </div>
+                
+                <div class="control-group">
+                    <h3>Exterior Color</h3>
+                    <div class="color-options">
+                        <div class="color-option active" data-color="#005eb8" style="background-color: #005eb8;"></div>
+                        <div class="color-option" data-color="#ffffff" style="background-color: #ffffff;"></div>
+                        <div class="color-option" data-color="#ff0000" style="background-color: #ff0000;"></div>
+                        <div class="color-option" data-color="#000000" style="background-color: #000000;"></div>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <h3>Camera Views</h3>
+                    <div class="view-buttons">
+                        <button class="view-button active" data-view="front">Front</button>
+                        <button class="view-button" data-view="side">Side</button>
+                        <button class="view-button" data-view="rear">Rear</button>
+                        <button class="view-button" data-view="top">Top</button>
+                        <button class="view-button" data-view="interior">Interior</button>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <h3>Animations</h3>
+                    <div class="animation-buttons">
+                        <button class="animation-button" data-animation="rotate">Rotate</button>
+                        <button class="animation-button" data-animation="showcase">Showcase</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="specs">
+            <h2>Technical Specifications</h2>
+            <div class="specs-grid">
+                <div class="spec-item">
+                    <h3>Engine</h3>
+                    <p>1.8L Turbocharged</p>
+                </div>
+                <div class="spec-item">
+                    <h3>Power</h3>
+                    <p>350+ HP</p>
+                </div>
+                <div class="spec-item">
+                    <h3>Weight</h3>
+                    <p>1,130 kg</p>
+                </div>
+                <div class="spec-item">
+                    <h3>0-100 km/h</h3>
+                    <p>< 4.0 seconds</p>
+                </div>
+                <div class="spec-item">
+                    <h3>Transmission</h3>
+                    <p>6-speed sequential</p>
+                </div>
+                <div class="spec-item">
+                    <h3>Category</h3>
+                    <p>GT4</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">ALPINE RACING</div>
+            <div class="footer-links">
+                <ul>
+                    <li><a href="#privacy">Privacy Policy</a></li>
+                    <li><a href="#terms">Terms of Use</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <a href="#" class="social-icon">FB</a>
+                <a href="#" class="social-icon">IG</a>
+                <a href="#" class="social-icon">TW</a>
+                <a href="#" class="social-icon">YT</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Alpine Racing Team. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script type="module" src="script.js"></script>
 </body>
 </html>
